@@ -4,6 +4,7 @@ import org.newdawn.slick.*;
 
 public class Rectangles extends BasicGame {
     private int x;
+    private int y;
 
 
     private static String Rectangles;
@@ -15,21 +16,28 @@ public class Rectangles extends BasicGame {
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-    // am Anfang einmal hier drin aufrufen (Variablen initialisieren, Objekte bauen)
+        // am Anfang einmal hier drin aufrufen (Variablen initialisieren, Objekte bauen)
         this.x = 100;
+        this.y = 100;
     }
 
     @Override
     public void update(GameContainer gameContainer, int i) throws SlickException {
     // wird die ganze Zeit immer wieder aufgerufen
         this.x++;
+        this.y++;
+
+        if (this.x>800){
+            this.x=0;
+            this.y=0;
+        }
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
     // auch die ganze Zeit (wenn notwendig) zum Zeichnen
         // Graphics zeigt auf Spielfeld (kann zeichnen)
-        graphics.drawRect(this.x,100, 100, 100);
+        graphics.drawRect(this.x,this.y, 100, 100);
         graphics.drawString("Hello Mr. Riedmann!", 50, 50  );
     }
 
